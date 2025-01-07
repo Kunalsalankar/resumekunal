@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer's Market Access App - SIH 2024</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #ffbd39;
+            --dark-bg: #1a1a1a;
+            --card-bg: #2a2a2a;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .section {
+            padding: 8rem 2rem 5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .project-description {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .project-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .project-description h3:first-child {
+            margin-top: 0;
+        }
+
+        .features-list {
+            list-style-type: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            padding: 1rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .module-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .module-card {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .module-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+        .tech-stack {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tech-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 189, 57, 0.3);
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 189, 57, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .section {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">AgroConnect</a>
+            <div class="nav-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Details Section -->
+    <section class="section">
+        <div class="container">
+            <div class="project-header">
+                <h1 class="project-title">Farmer's Market Access App</h1>
+                <p class="project-subtitle">Smart India Hackathon 2024 - Problem Statement ID: 1637</p>
+            </div>
+
+            <div class="project-content">
+                <div class="project-description">
+                    <h3>Project Overview</h3>
+                    <p>We developed mobile application for agripreneurs that enables farmers to showcase their products, connect with stakeholders and buyers, and manage their product listings directly, thereby eliminating the need for intermediaries. The platform connects key stakeholders, including farmers, buyers, KVKs (Krishi Vigyan Kendra), FPOs (Farmer Producer Organizations), and APMCs (Agricultural Produce Market Committees).</p>
+
+                    <h3>Objectives</h3>
+                    <ul class="features-list">
+                        <li>Develop a user-centric application to address challenges such as weather-related damages, time inefficiencies, and high transportation costs</li>
+                        <li>Facilitate access to affordable and diverse seed varieties, including rare and heritage types</li>
+                        <li>Empower farmers by enabling direct contact with buyers, bypassing intermediaries</li>
+                        <li>Provide real-time market price information and quick adjustment to market demands</li>
+                    </ul>
+
+                    <h3>Unique Features</h3>
+                    <ul class="features-list">
+                        <li>Daily Market Price Updates</li>
+                        <li>Price Negotiation System</li>
+                        <li>Seed Trade Marketplace</li>
+                        <li>Auction System</li>
+                        <li>Transportation Facilitation</li>
+                        <li>Pre-Booking Options</li>
+                        <li>Secure Payment Integration</li>
+                    </ul>
+                </div>
+
+                <div class="module-section">
+                    <h3>Core Modules</h3>
+                    <div class="module-grid">
+                        <div class="module-card">
+                            <h4>Direct Purchase</h4>
+                            <p>Allows buyers to browse and sort items by location, product type, and price range, providing farmers with broader market access and increasing sales opportunities.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Subscription Services</h4>
+                            <p>Offers fresh vegetables and milk delivery services, ensuring steady income for farmers and convenient access for consumers while reducing middlemen involvement.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Negotiation Module</h4>
+                            <p>Enables direct price negotiation through chat and calls, ensuring fair deals between buyers and farmers through transparent communication.</p>
+                        </div>
+                        <div class="module-card">
+                            <h4>Auction System</h4>
+                            <p>Facilitates both physical and e-auctions with video conferencing capabilities, allowing real-time bidding for optimal price discovery.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <h3>Technical Implementation</h3>
+                    <ul class="features-list">
+                        <li>Flutter framework for cross-platform mobile development</li>
+                        <li>Firebase for backend services and real-time updates</li>
+                        <li>Stripe for secure payment processing</li>
+                        <li>Integration with third-party logistics services</li>
+                    </ul>
+
+                    <h3>Feasibility Analysis</h3>
+                    <p>The project demonstrates strong technical feasibility due to widespread smartphone access and improving rural internet connectivity. The platform addresses trust and security concerns through secure payment gateways and transparent pricing mechanisms.</p>
+
+                    <h3>Future Scope</h3>
+                    <ul class="features-list">
+                        <li>Real-time Quality and Grading System integration</li>
+                        <li>AI-driven price prediction models</li>
+                        <li>Predictive analytics for market demand</li>
+                        <li>AI-powered product recommendations</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <h3>Technology Stack</h3>
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <i class="fas fa-fire tech-icon firebase-icon"></i>
+                            <h4>Firebase</h4>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fas fa-mobile-alt tech-icon flutter-icon"></i>
+                            <h4>Flutter</h4>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fas fa-credit-card tech-icon stripe-icon"></i>
+                            <h4>Stripe</h4>
+                          </div>
+                    
+                        
+                    </div>
+                </div>
+                <h2 class="section-title">Implementation Overview</h2>
+
+                <div class="project-gallery">
+
+                    <div class="gallery-item">
+                        <img src="aaa.jpg" alt="Market View Dashboard">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="af.jpg" alt="Product Listing Page">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="afa.jpg" alt="Transportation Services">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="afadss.jpg" alt="Transportation Services">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="aff.jpg"   alt="Transportation Services">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="afsf.jpg" alt="Transportation Services">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="agr.jpg" alt="Transportation Services">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="agro1.jpg" alt="Transportation Services">
+                    </div>
+                   
+                   
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/Kunalsalankar/Agroconnect" class="btn btn-primary">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to main portfolio button -->
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <script>
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(26, 26, 26, 0.7)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunal Salankar - Portfolio</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #ffbd39;
+            --dark-bg: #1a1a1a;
+            --card-bg: #2a2a2a;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content span {
+            color: var(--primary-color);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 189, 57, 0.3);
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+        }
+
+        /* Skills */
+        .skill-bar {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--card-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-gray);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Kunal Salankar</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1><span>Hello, I'm</span> Kunal</h1>
+            <p>App Developer & Computer Engineering Student</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Contact Me</a>
+                <a href="#projects" class="btn btn-outline">View Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p>A passionate and diligent Computer Engineering student with strong skills in Android Development (Flutter, Java) and Firebase. Proven success in developing innovative mobile applications, including award-winning projects at Smart India Hackathons (SIH).</p>
+                    <div class="info-grid">
+                        <p><strong>Profile:</strong> App Developer</p>
+                        <p><strong>Education:</strong> B.Tech</p>
+                        <p><strong>Location:</strong> Pulgaon, India</p>
+                        <p><strong>Languages:</strong> English, Hindi, Marathi</p>
+                        <p><strong>Interests:</strong> Cricket, Football</p>
+                    </div>
+                </div>
+                <div class="skills">
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>App Development</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>Java</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>Python</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-date">2022-26 (Expected)</div>
+                    <h3>Bachelor of Technology</h3>
+                    <p>Bajaj Institute of Technology, Wardha</p>
+                    <p>7.17 pointer (Till 4 Sem)</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-date">2019-2021</div>
+                    <h3>Junior College</h3>
+                    <p>RK Junior College Pulgaon</p>
+                    <p>91.83%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="window.location.href='project1.html'">
+                    <img src="1.png" alt="Music Store Analysis" class="project-img">
+                    <div class="project-content">
+                        <h3>Water and Electricity Tracking App</h3>
+                        <p>Our Team Won the SIH 2023 in Problem Statement 1393(Water and Electricity Tracking App). We designed a mobile application that shows Water and Electricity Consumption in real-time </p>
+                    </div>
+                </div>
+                <div class="project-card" onclick="window.location.href='project2.html'">
+                    <img src="farmer.jpg" alt="Data Analysis" class="project-img">
+                    <div class="project-content">
+                        <h3>Mobile App for Direct Market Access for farmer</h3>
+                        <p>The application connects farmers directly with buyers, eliminating middlemen. It includes features like subscription, auction, and negotiation modules to simplify selling.  .</p>
+                    </div>
+                </div>
+                <div class="project-card" onclick="window.location.href='project3.html'">
+                    <img src="beach.jpg" alt="Power BI Dashboard" class="project-img">
+                    <div class="project-content">
+                        <h3>Coastly Alert App</h3>
+                        <p>Our team was a finalist in SIH 2024 for Problem Statement 1656(Development of a mobile application to provide recreational suitability information of beach locations across India).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <h3>Location</h3>
+                    <p>Pulgaon, India</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <h3>Phone</h3>
+                    <p>+91 8080647259</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <h3>Email</h3>
+                    <p>kunalsalankar@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://github.com/Kunalsalankar"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/kunal-salankar-884b83249/"><i class="fab fa-linkedin"></i></a>
+			<a href="mailto:kunalsalankar@gmail.com"><i class="fab fa-envelope "></i></a>
+        </div>
+        <p>&copy; 2024 Kunal Salankar. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for animations and interactions -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate skill bars on scroll
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.progress');
+            skillBars.forEach(bar => {
+                const parentRect = bar.parentElement.getBoundingClientRect();
+                if (parentRect.top < window.innerHeight && parentRect.bottom > 0) {
+                    bar.style.width = bar.style.width || '0%';
+                    bar.style.width = bar.parentElement.previousElementSibling.lastElementChild.textContent;
+                }
+            });
+        }
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.section-title, .about-content, .education-card, .project-card, .contact-card');
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            // Add initial animation classes
+            const elements = document.querySelectorAll('.section-title, .about-content, .education-card, .project-card, .contact-card');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease-out';
+            });
+
+            // Trigger initial animations
+            animateSkillBars();
+            animateOnScroll();
+        });
+
+        // Handle scroll events
+        window.addEventListener('scroll', () => {
+            animateSkillBars();
+            animateOnScroll();
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(26, 26, 26, 0.7)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Mobile menu toggle
+        const createMobileMenu = () => {
+            const navbar = document.querySelector('.navbar');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // Create mobile menu button
+            const mobileMenuBtn = document.createElement('button');
+            mobileMenuBtn.className = 'mobile-menu-btn';
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.style.cssText = `
+                display: none;
+                background: none;
+                border: none;
+                color: var(--text-light);
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0.5rem;
+            `;
+
+            // Add mobile menu button to navbar
+            navbar.querySelector('.nav-container').appendChild(mobileMenuBtn);
+
+            // Add mobile menu styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @media (max-width: 768px) {
+                    .mobile-menu-btn {
+                        display: block !important;
+                    }
+                    .nav-links {
+                        display: none;
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        background: var(--dark-bg);
+                        padding: 1rem;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 1rem;
+                    }
+                    .nav-links.active {
+                        display: flex;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Toggle mobile menu
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navbar.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        };
+
+        // Initialize mobile menu
+        createMobileMenu();
+    </script>
+</body>
+</html>

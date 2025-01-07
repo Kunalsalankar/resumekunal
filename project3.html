@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coasty Check - Beach Safety App - SIH 2024</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #00bcd4;
+            --dark-bg: #1a1a1a;
+            --card-bg: #2a2a2a;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .section {
+            padding: 8rem 2rem 5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .project-description {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .project-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .project-description h3:first-child {
+            margin-top: 0;
+        }
+
+        .features-list {
+            list-style-type: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .impact-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .impact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .workflow-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* Updated Gallery Styles for 3 columns */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            background: #1a1a1a;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            aspect-ratio: 9/16;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 188, 212, 0.3);
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+        }
+
+        /* Updated responsive styles */
+        @media (max-width: 992px) {
+            .project-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .section {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            text-align: center;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-screenshots {
+            grid-column: span 3;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .website-screenshots {
+            grid-column: span 3;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Coasty Check</a>
+            <div class="nav-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Details Section -->
+    <section class="section">
+        <div class="container">
+            <div class="project-header">
+                <h1 class="project-title">Coasty Check</h1>
+                <p class="project-subtitle">Smart India Hackathon 2024 - Problem Statement ID: SIH1656</p>
+            </div>
+
+            <div class="project-content">
+                <div class="project-description">
+                    <h3>Project Overview</h3>
+                    <p>Coasty Check is a mobile application designed to provide recreational suitability information for beach locations across India. The app uses real-time data from INCOIS APIs to provide safety alerts and forecasts for tourists, ensuring a safer beach experience. We also developed the website for the activity manager and beach officer to add the notifications,activities,review of the beach in the app.</p>
+
+                    <h3>Key Features</h3>
+                    <ul class="features-list">
+                        <li>Interactive UI with color-coded safety indicators</li>
+                        <li>Real-time alert notifications for beach conditions</li>
+                        <li>Nearby amenities information</li>
+                        <li>Geospatial visualization of beach safety data</li>
+                        <li>Fast & foresighted warning alerts</li>
+                        <li>Accurate forecasting using ML models</li>
+                        <li>Simple and intuitive user interface</li>
+                    </ul>
+                </div>
+
+                <div class="workflow-section">
+                    <h3>Technologies Used</h3>
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <i class="fab fa-flutter tech-icon flutter-icon"></i>
+                            <span class="tech-name">Flutter</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-fire tech-icon firebase-icon"></i>
+                            <span class="tech-name">Firebase</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-code tech-icon web-icon"></i>
+                            <span class="tech-name">HTML, CSS & JS</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-flask tech-icon flask-icon"></i>
+                            <span class="tech-name">Flask</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-python tech-icon python-icon"></i>
+                            <span class="tech-name">Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-brain tech-icon ml-icon"></i>
+                            <span class="tech-name">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <h3>Machine Learning Model</h3>
+                    <ul class="features-list">
+                        <li>Real-time data processing from INCOIS APIs</li>
+                        <li>Normalization and validation of collected data</li>
+                        <li>Cross-validation for model accuracy</li>
+                        <li>Prediction engine for safety alerts</li>
+                        <li>User feedback integration for model improvement</li>
+                    </ul>
+
+                    <h3>Stakeholders</h3>
+                    <ul class="features-list">
+                        <li>INCOIS (Indian National Center for Ocean Information Services)</li>
+                        <li>Tourists and beach visitors</li>
+                        <li>Beach administration</li>
+                        <li>Local businesses and restaurants</li>
+                        <li>Hotels and hospitality services</li>
+                        <li>Local community members</li>
+                    </ul>
+                </div>
+
+                <div class="project-description">
+                    <h3>Impact Analysis</h3>
+                    <div class="impact-grid">
+                        <div class="impact-card">
+                            <h4>Social Impact</h4>
+                            <ul class="features-list">
+                                <li>Improved safety for beach visitors</li>
+                                <li>Promoting sustainable tourism</li>
+                                <li>Enhanced community awareness</li>
+                            </ul>
+                        </div>
+                        <div class="impact-card">
+                            <h4>Economic Impact</h4>
+                            <ul class="features-list">
+                                <li>Support for local businesses</li>
+                                <li>Boost to local tourism</li>
+                                <li>Job creation opportunities</li>
+                            </ul>
+                        </div>
+                        <div class="impact-card">
+                            <h4>Technological Impact</h4>
+                            <ul class="features-list">
+                                <li>Innovation in data integration</li>
+                                <li>Enhanced user experience</li>
+                                <li>Advanced safety monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="section-title">Mobile App Interface</h2>
+                <div class="project-gallery">
+                    <div class="app-screenshots">
+                        <div class="gallery-item">
+                            <img src="image copy 3.png" alt="App Screenshot 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image copy 4.png" alt="App Screenshot 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image copy 5.png" alt="App Screenshot 3">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image copy 6.png" alt="App Screenshot 4">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image copy 7.png" alt="App Screenshot 5">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image copy 8.png" alt="App Screenshot 6">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image copy 9.png" alt="App Screenshot 7">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="image copy 10.png" alt="App Screenshot 8">
+                        </div>
+                    </div>
+                </div>
+    
+                <h2 class="section-title">Website Interface</h2>
+                <div class="project-gallery">
+                    <div class="website-screenshots">
+                        <div class="gallery-item">
+                            <img src="Screenshot 2024-12-30 173241.png" alt="Website Dashboard">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Screenshot 2024-12-30 173858.png" alt="Activities Management">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="Screenshot 2024-12-30 173910.png" alt="Beach Information">
+                        </div>
+                    </div>
+                </div>
+    
+
+                <div class="project-links">
+                    <a href="https://github.com/Kunalsalankar/beach" class="btn btn-primary">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to main portfolio button -->
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <script>
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(26, 26, 26, 0.7)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
