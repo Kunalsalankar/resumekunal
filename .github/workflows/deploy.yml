@@ -18,8 +18,8 @@ jobs:
         with:
           args: --delete
         env:
-          AWS_S3_BUCKET: your-bucket-name
+          AWS_S3_BUCKET: my-portfolio-websitekunal
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ ap-south-1 }}
-          SOURCE_DIR: ./  # Folder containing index.html, etc.
+          AWS_REGION: ap-south-1   # FIXED: No ${{ }} here
+          SOURCE_DIR: ./           # Keep as root if index.html is here
