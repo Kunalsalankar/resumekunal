@@ -106,6 +106,7 @@
             display: flex;
             gap: 1rem;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -160,6 +161,38 @@
         }
 
         /* Skills */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 189, 57, 0.2);
+        }
+
+        .category-title {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-category p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         .skill-bar {
             margin-bottom: 1.5rem;
         }
@@ -327,6 +360,7 @@
                 <a href="#about">About</a>
                 <a href="#education">Education</a>
                 <a href="#projects">Projects</a>
+                <a href="kunal.pdf" download>Resume</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
@@ -338,8 +372,10 @@
             <h1><span>Hello, I'm</span> Kunal</h1>
             <p>App Developer & Computer Engineering Student</p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Contact Me</a>
+                <a href="kunal.pdf" class="btn btn-primary" download>Download Resume</a>
                 <a href="#projects" class="btn btn-outline">View Projects</a>
+                <a href="https://www.linkedin.com/in/kunal-salankar-884b83249/?originalSubdomain=in" class="btn btn-outline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
             </div>
         </div>
     </section>
@@ -360,50 +396,33 @@
                     </div>
                 </div>
                 <div class="skills">
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>Flutter</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 95%"></div>
-                        </div>
+                    <div class="skill-category">
+                        <h4 class="category-title">Cloud</h4>
+                        <p>AWS (EC2, S3, Lambda, IAM, CloudWatch, VPC, CloudFront, IoT Core, DynamoDB, IoT TwinMaker)</p>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>Java</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 85%"></div>
-                        </div>
+                    <div class="skill-category">
+                        <h4 class="category-title">Mobile Development</h4>
+                        <p>Flutter, Flutter BLoC, Flutter Cubit</p>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>Python</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 80%"></div>
-                        </div>
+                    <div class="skill-category">
+                        <h4 class="category-title">Backend</h4>
+                        <p>PHP, Laravel, Flask</p>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>AWS</span>
-                            <span>50%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 50%"></div>
-                        </div>
+                    <div class="skill-category">
+                        <h4 class="category-title">AI/ML</h4>
+                        <p>Python, OpenCV, Tesseract OCR, PyZbar, BLIP (Vision-Language Model), Scikit-Image, Hugging Face Spaces</p>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>AI and ML</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 70%"></div>
-                        </div>
+                    <div class="skill-category">
+                        <h4 class="category-title">Databases</h4>
+                        <p>Firebase, Cloud Firestore</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4 class="category-title">Developer Tools</h4>
+                        <p>Git, GitHub, Postman</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4 class="category-title">Deployment</h4>
+                        <p>AWS, Firebase Hosting, Vercel</p>
                     </div>
                 </div>
             </div>
@@ -419,7 +438,7 @@
                     <div class="education-date">2022-26 </div>
                     <h3>Bachelor of Technology</h3>
                     <p>Bajaj Institute of Technology, Wardha</p>
-                    <p>7.17 pointer (Till 4 Sem)</p>
+                    <p>7.22 pointer (Till 6 Sem)</p>
                 </div>
                 <div class="education-card">
                     <div class="education-date">2019-2021</div>
@@ -509,7 +528,7 @@
             <a href="https://www.linkedin.com/in/kunal-salankar-884b83249/"><i class="fab fa-linkedin"></i></a>
 			<a href="mailto:kunalsalankar@gmail.com"><i class="fab fa-envelope "></i></a>
         </div>
-        <p>&copy; 2024 Kunal Salankar. All rights reserved.</p>
+        <p>&copy; 2025 Kunal Salankar. All rights reserved.</p>
     </footer>
 
     <!-- JavaScript for animations and interactions -->
