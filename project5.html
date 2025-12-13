@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATPAC Trip Tracking & Analytics</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #ffbd39;
+            --dark-bg: #1a1a1a;
+            --card-bg: #2a2a2a;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .section {
+            padding: 8rem 2rem 5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .project-description {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .project-description h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .project-description h3:first-child {
+            margin-top: 0;
+        }
+
+        .features-list {
+            list-style-type: none;
+            margin: 1rem 0;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            text-align: center;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            background: #1a1a1a;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            aspect-ratio: 9/16;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 189, 57, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .workflow-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 189, 57, 0.25);
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 189, 57, 0.25);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .section {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">NATPAC Trips</a>
+            <div class="nav-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="project-header">
+                <h1 class="project-title">NATPAC Trip Tracking & Analytics</h1>
+                <p class="project-subtitle">Secure mobile trip logging, GPS tracking, notifications, and an admin analytics dashboard for transportation research</p>
+            </div>
+
+            <div class="project-content">
+                <div class="project-description">
+                    <h3>Project Overview</h3>
+                    <p>A secure, role-based system for automated trip data collection. Mobile users can record and track trips with maps and notifications, while NATPAC scientists/admins use a web dashboard for analytics, filtering, and reporting.</p>
+
+                    <h3>Key User Features</h3>
+                    <ul class="features-list">
+                        <li>Secure registration & login using Firebase Authentication</li>
+                        <li>Role-based access (mobile users vs NATPAC scientist/admin console)</li>
+                        <li>Trip creation with origin/destination via GPS or manual map entry</li>
+                        <li>Transport mode selection (walk, car, bus, train, flight, etc.)</li>
+                        <li>Trip metadata: time/date, purpose/activity, and accompanying travellers</li>
+                        <li>Smart nudges to complete missing fields before submitting</li>
+                        <li>Real-time trip status: Active, Upcoming, Completed</li>
+                        <li>Checkpoint tracking during active trips + route reconstruction on map</li>
+                        <li>Location-based comments + map pins for community insights</li>
+                        <li>Push notifications (FCM) for recommendations and region-specific alerts</li>
+                        <li>Trip planner AI chatbot for conversational assistance and local suggestions</li>
+                    </ul>
+
+                    <h3>Admin / NATPAC Scientist Dashboard</h3>
+                    <ul class="features-list">
+                        <li>Live analytics: total trips, users, mode share, daily trips, top OD pairs</li>
+                        <li>Advanced search & filters by mode, status, time range, origin/destination</li>
+                        <li>Status badges for quick identification (ACTIVE / PAST / FUTURE)</li>
+                        <li>User monitoring, trip review, and comment auditing</li>
+                    </ul>
+
+                    <h3>Data & Security</h3>
+                    <ul class="features-list">
+                        <li>Firestore collections for Users, Trips, Checkpoints, and Comments</li>
+                        <li>Role-based access control (RBAC) for admin/scientist privileges</li>
+                        <li>Secure credential handling via Firebase Auth (hashed passwords)</li>
+                    </ul>
+
+                    <h3>Integrations & Deployment</h3>
+                    <ul class="features-list">
+                        <li>Google Maps API for geocoding, route visualization, and OD mapping</li>
+                        <li>Firebase Cloud Messaging for real-time push notifications</li>
+                    </ul>
+                </div>
+
+                <div class="workflow-section">
+                    <h3>Technologies Used</h3>
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <i class="fas fa-fire"></i>
+                            <div>Firebase</div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-user-shield"></i>
+                            <div>Firebase Auth</div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <div>Firestore</div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-bell"></i>
+                            <div>FCM</div>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-map"></i>
+                            <div>Google Maps API</div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/Kunalsalankar/tourmate" target="_blank" rel="noreferrer" class="btn btn-outline">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Project Screenshots</h2>
+                <div class="project-gallery">
+                    <div class="gallery-item"><img src="t1.jpg" alt="Tourmate Screenshot 1" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="t2.jpg" alt="Tourmate Screenshot 2" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="t3.jpg" alt="Tourmate Screenshot 3" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="t4.jpg" alt="Tourmate Screenshot 4" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="t5.jpg" alt="Tourmate Screenshot 5" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="t6.jpg" alt="Tourmate Screenshot 6" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="t7.jpg" alt="Tourmate Screenshot 7" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="t8.jpg" alt="Tourmate Screenshot 8" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="t9.jpg" alt="Tourmate Screenshot 9" onerror="this.style.display='none'"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(26, 26, 26, 0.7)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
