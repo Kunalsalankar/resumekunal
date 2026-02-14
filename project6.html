@@ -146,12 +146,14 @@
 
         .project-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 360px));
+            justify-content: center;
+            justify-items: center;
             gap: 2rem;
             padding: 2rem;
             background: var(--card-bg);
             border-radius: 10px;
-            margin: 2rem 0;
+            margin: 2rem auto;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
@@ -163,6 +165,7 @@
             transition: transform 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             height: 180px;
+            width: 100%;
         }
 
         .gallery-item:hover {
@@ -307,25 +310,14 @@
             <div class="project-content">
                 <div class="project-description">
                     <h3>Project Overview</h3>
-                    <p>An intelligent, panel-level solar monitoring system that combines real-time electrical sensing with cloud processing, digital twin visualization, AI-based image fault detection, and GenAI-driven root cause analysis. The system continuously tracks Voltage/Current/Power, detects anomalies, triggers automated image capture, and produces technician-ready recommendations and alerts.</p>
+                    <p>Panel-level solar monitoring with IoT telemetry, anomaly detection, automated image capture, and AI/GenAI-based fault diagnosis with technician-ready recommendations.</p>
 
-                    <h3>System Architecture</h3>
+                    <h3>Quick Summary</h3>
                     <ul class="features-list">
-                        <li>Hardware: Solar panel, Voltage sensor, Current sensor, ESP32, ESP32-CAM, robotic arm (camera positioning)</li>
-                        <li>Cloud: AWS IoT Core (MQTT), AWS Lambda, Amazon S3, API Gateway, Amazon SNS, AWS IoT TwinMaker</li>
-                        <li>AI: YOLOv8 for visual fault detection + RAG for context retrieval + GenAI for diagnosis & recommendations</li>
-                        <li>Frontend: Web dashboard for real-time charts, I-V curve, historical analytics, and panel health reports</li>
-                    </ul>
-
-                    <h3>Working Flow</h3>
-                    <ul class="features-list">
-                        <li>ESP32 reads Voltage (V) and Current (I), computes Power (P = V × I), and publishes telemetry to AWS IoT Core via MQTT</li>
-                        <li>AWS Lambda validates and processes telemetry, stores data to S3, and exposes data via API Gateway for dashboards</li>
-                        <li>Threshold-based anomaly checks detect voltage/current/power deviations and trigger automated image capture via ESP32-CAM</li>
-                        <li>YOLOv8 detects panel faults (cracks, dust, hotspots, shading, physical damage), producing labels and bounding boxes</li>
-                        <li>RAG retrieves similar cases, maintenance logs, and documentation; GenAI generates root cause + severity + actions</li>
-                        <li>Digital Twin (TwinMaker) visualizes panel state (Healthy/Warning/Critical) with real-time telemetry and fault indicators</li>
-                        <li>SNS alerts (Email/SMS) notify technicians with panel ID, fault type, severity, and recommended action</li>
+                        <li>Real-time panel telemetry (V/I/P) via ESP32 + MQTT</li>
+                        <li>Anomaly detection triggers automatic camera capture</li>
+                        <li>YOLOv8 + GenAI generates fault type, severity, and action plan</li>
+                        <li>Digital twin view + Email/SMS alerts for maintenance</li>
                     </ul>
 
                     <h3>Key Features</h3>
@@ -335,8 +327,7 @@
                         <li>Automated anomaly detection and camera trigger for evidence capture</li>
                         <li>AI-based visual fault detection (YOLOv8) with severity tagging</li>
                         <li>GenAI-based root cause analysis and maintenance recommendations</li>
-                        <li>Digital Twin visualization for remote monitoring and predictive maintenance</li>
-                        <li>Instant alerting via Amazon SNS (Email/SMS)</li>
+                        <li>Digital Twin visualization for remote monitoring</li>
                     </ul>
                 </div>
 
@@ -361,15 +352,12 @@
                         </div>
                         <div class="tech-item">
                             <i class="fas fa-bolt"></i>
-                            <div>Lambda</div>
+                            <div>AWS Lambda</div>
                         </div>
-                        <div class="tech-item">
-                            <i class="fas fa-database"></i>
-                            <div>S3</div>
-                        </div>
+                       
                         <div class="tech-item">
                             <i class="fas fa-share-nodes"></i>
-                            <div>API Gateway</div>
+                            <div>AWS API Gateway</div>
                         </div>
                         <div class="tech-item">
                             <i class="fas fa-bell"></i>
@@ -377,7 +365,7 @@
                         </div>
                         <div class="tech-item">
                             <i class="fas fa-cubes"></i>
-                            <div>TwinMaker</div>
+                            <div>AWS TwinMaker</div>
                         </div>
                         <div class="tech-item">
                             <i class="fas fa-eye"></i>
@@ -393,20 +381,29 @@
                         </div>
                     </div>
 
-                    <div class="project-links">
-                        <a href="https://github.com/Kunalsalankar" target="_blank" rel="noreferrer" class="btn btn-outline">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                    </div>
+                    
                 </div>
 
-                <h2 class="section-title">Project Screenshots</h2>
+                <h2 class="section-title">Hardware Setup</h2>
                 <div class="project-gallery">
-                    <div class="gallery-item"><img src="g1.png" alt="Solar Monitoring Screenshot 1" onerror="this.style.display='none'"></div>
-                    <div class="gallery-item"><img src="g2.png" alt="Solar Monitoring Screenshot 2" onerror="this.style.display='none'"></div>
-                    <div class="gallery-item"><img src="g3.png" alt="Solar Monitoring Screenshot 3" onerror="this.style.display='none'"></div>
-                    <div class="gallery-item"><img src="g4.png" alt="Solar Monitoring Screenshot 4" onerror="this.style.display='none'"></div>
-                    <div class="gallery-item"><img src="g5.png" alt="Solar Monitoring Screenshot 5" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="h1 (1).jpeg" alt="Hardware Setup 1" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="h1 (2).jpeg" alt="Hardware Setup 2" onerror="this.style.display='none'"></div>
+                </div>
+
+                <h2 class="section-title">Website Dashboard</h2>
+                <div class="project-gallery">
+                    <div class="gallery-item"><img src="l1.jpeg" alt="Website Dashboard 1" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="l2.jpeg" alt="Website Dashboard 2" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="l3.jpeg" alt="Website Dashboard 3" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="l4.jpeg" alt="Website Dashboard 4" onerror="this.style.display='none'"></div>
+
+                </div>
+
+                
+                <h2 class="section-title">Digital Twin</h2>
+                <div class="project-gallery">
+                    <div class="gallery-item"><img src="g1.png" alt="Digital Twin 1" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="g2.png" alt="Digital Twin 2" onerror="this.style.display='none'"></div>
                 </div>
             </div>
         </div>
