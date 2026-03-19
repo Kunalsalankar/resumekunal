@@ -157,14 +157,20 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
+        .project-gallery-3col {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
         .gallery-item {
             position: relative;
             border-radius: 15px;
             background: #1a1a1a;
-            overflow: hidden;
+            overflow: visible;
             transition: transform 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             width: 100%;
         }
 
@@ -175,13 +181,25 @@
 
         .gallery-item img {
             width: 100%;
-            height: 100%;
+            height: 180px;
             object-fit: cover;
             transition: transform 0.3s ease;
+            border-radius: 15px 15px 0 0;
         }
 
         .gallery-item:hover img {
             transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: var(--primary-color);
+            padding: 1rem 0.8rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 0 0 15px 15px;
         }
 
         .workflow-section {
@@ -385,25 +403,65 @@
                 </div>
 
                 <h2 class="section-title">Hardware Setup</h2>
-                <div class="project-gallery">
+                <div class="project-gallery project-gallery-3col">
                     <div class="gallery-item"><img src="h1 (1).jpeg" alt="Hardware Setup 1" onerror="this.style.display='none'"></div>
                     <div class="gallery-item"><img src="h1 (2).jpeg" alt="Hardware Setup 2" onerror="this.style.display='none'"></div>
+                     <div class="gallery-item"><img src="w1 (5).png" alt="Website Dashboard 5" onerror="this.style.display='none'"></div>
+
                 </div>
 
                 <h2 class="section-title">Website Dashboard</h2>
-                <div class="project-gallery">
-                    <div class="gallery-item"><img src="l1.jpeg" alt="Website Dashboard 1" onerror="this.style.display='none'"></div>
-                    <div class="gallery-item"><img src="l2.jpeg" alt="Website Dashboard 2" onerror="this.style.display='none'"></div>
-                    <div class="gallery-item"><img src="l3.jpeg" alt="Website Dashboard 3" onerror="this.style.display='none'"></div>
-                    <div class="gallery-item"><img src="l4.jpeg" alt="Website Dashboard 4" onerror="this.style.display='none'"></div>
-
+                <div class="project-gallery project-gallery-3col">
+                    <div class="gallery-item">
+                        <img src="rd.jpeg" alt="Home Page" onerror="this.style.display='none'">
+                        <div class="gallery-caption">Home Page</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="w1 (2).png" alt="Home Page" onerror="this.style.display='none'">
+                        <div class="gallery-caption">Home Page</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="w1 (6).png" alt="Health Report" onerror="this.style.display='none'">
+                        <div class="gallery-caption">Health Report</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="w1 (8).png" alt="AI Recommendation" onerror="this.style.display='none'">
+                        <div class="gallery-caption">AI Recommendation</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="w1 (1).png" alt="Voltage vs Time Graph" onerror="this.style.display='none'">
+                        <div class="gallery-caption">Voltage vs Time Graph</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="w0.png" alt="IV and PV Graph" onerror="this.style.display='none'">
+                        <div class="gallery-caption">IV and PV Graph</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="w1 (4).png" alt="Maintenance Comparison" onerror="this.style.display='none'">
+                        <div class="gallery-caption">Maintenance Comparison</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="w1 (7).png" alt="Schedule Maintenance" onerror="this.style.display='none'">
+                        <div class="gallery-caption">Schedule Maintenance</div>
+                    </div>
                 </div>
 
                 
                 <h2 class="section-title">Digital Twin</h2>
-                <div class="project-gallery">
+                <div class="project-gallery project-gallery-3col">
                     <div class="gallery-item"><img src="g1.png" alt="Digital Twin 1" onerror="this.style.display='none'"></div>
                     <div class="gallery-item"><img src="g2.png" alt="Digital Twin 2" onerror="this.style.display='none'"></div>
+                                        <div class="gallery-item"><img src="t1.png" alt="Digital Twin 2" onerror="this.style.display='none'"></div>
+
+                </div>
+
+                <h2 class="section-title">AWS Visualization</h2>
+                <div class="project-gallery project-gallery-3col">
+                    <div class="gallery-item"><img src="y1 (2).png" alt="AWS 2" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="y1 (3).png" alt="AWS 3" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="y1 (4).png" alt="AWS 4" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="y1 (6).png" alt="AWS 6" onerror="this.style.display='none'"></div>
+                    <div class="gallery-item"><img src="y1 (7).png" alt="AWS 7" onerror="this.style.display='none'"></div>
                 </div>
             </div>
         </div>
